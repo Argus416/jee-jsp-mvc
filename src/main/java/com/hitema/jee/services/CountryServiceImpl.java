@@ -20,22 +20,23 @@ public class CountryServiceImpl implements CountryService{
     private static final Logger log = LoggerFactory.getLogger(CountryServiceImpl.class);
     @Override
     public Country create(Country country) {
-        return null;
+        log.info("Country created : "+country);
+        return repository.save(country);
     }
 
     @Override
     public Country read(Long id) {
-        return null;
+        return repository.findById(id).orElse(null);
     }
 
     @Override
     public Country update(Country country) {
-        return null;
+        return repository.save(country);
     }
 
     @Override
     public void delete(Long id) {
-
+        repository.deleteById(id);
     }
 
     @Override

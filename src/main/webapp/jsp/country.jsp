@@ -27,28 +27,13 @@
 <%--<jsp:include page="header.jsp"></jsp:include>--%>
 
 	<div class="w3-container">
-		<h2 style="text-align: center">Sakila - countries</h2>
-		<br>
-		<button onclick="<c:url value="/" />" >Retour</button>
+		I'm in ${country.country}
 
-		<table id="countriesTable" class="w3-centered w3-table-all">
-			<thead>
-				<tr class="w3-light-grey">
-					<th>Id</th>
-					<th>Country</th>
-				</tr>
-			</thead>
-			<tbody>
-				<c:forEach items="${countries}" var="elem">
-					<tr>
-						<th scope="row">${elem.id}</th>
-						<td>
-							<a href="country/${elem.id}">${elem.country}</a>
-						</td>
-					</tr>
-				</c:forEach>
-			</tbody>
-		</table>
+		<ul >
+			<c:forEach items="${country.cities}" var="city">
+				<li>${city.city}</li>
+			</c:forEach>
+		</ul>
 	</div>
 </body>
 <!-- JavaScript resources dataTables + jQuery -->

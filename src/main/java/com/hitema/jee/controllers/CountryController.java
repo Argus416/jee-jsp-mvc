@@ -8,6 +8,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
@@ -35,4 +36,12 @@ public class CountryController {
 		List<Country> countries = service.readAll();
         return new ModelAndView("countries","countries",countries);
     }
+
+	@GetMapping("/country/{id}")
+	public ModelAndView getCountry(@PathVariable String id) {
+		Long numericId = Long.parseLong(id);
+		Country country = service.read(numericId);
+		System.out.println("Country : "+country);
+		return new ModelAndView("country","country",country);
+	}
 }
