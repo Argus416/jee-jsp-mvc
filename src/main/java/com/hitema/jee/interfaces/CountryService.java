@@ -1,4 +1,4 @@
-package com.hitema.jee.services;
+package com.hitema.jee.interfaces;
 
 import com.hitema.jee.entities.Country;
 

@@ -1,15 +1,17 @@
 package com.hitema.jee.services;
 
 import com.hitema.jee.entities.Country;
+import com.hitema.jee.interfaces.CountryService;
 import com.hitema.jee.repositories.CountryRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
-public class CountryServiceImpl implements CountryService{
+public class CountryServiceImpl implements CountryService {
 
     private CountryRepository repository;
 
@@ -21,6 +23,9 @@ public class CountryServiceImpl implements CountryService{
     @Override
     public Country create(Country country) {
         log.info("Country created : "+country);
+        if(country.getLastUpdate() ==null){
+            country.setLastUpdate(LocalDateTime.now());
+        }
         return repository.save(country);
     }
 

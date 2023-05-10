@@ -2,12 +2,14 @@ package com.hitema.jee.controllers;
 
 
 import com.hitema.jee.entities.Country;
-import com.hitema.jee.services.CountryService;
+import com.hitema.jee.interfaces.CountryService;
 import jakarta.annotation.PostConstruct;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -54,13 +56,10 @@ public class CountryController {
 		return new ModelAndView("country/add");
 	}
 
-	@PostMapping("/country/add")
-	public  ModelAndView  addCountryPost(@ModelAttribute Country country) {
-		country.setLastUpdate(LocalDateTime.now());
+	@PostMapping("/country/post-add")
+	public ModelAndView addCountryPost(@Validated @ModelAttribute("addCountryPost") Country country) {
+		log.info("Country : "+country);
 		service.create(country);
 		return new ModelAndView("country/one","country",country);
 	}
-
-
-
 }

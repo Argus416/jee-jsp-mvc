@@ -2,15 +2,12 @@ package com.hitema.jee.controllers;
 
 
 import com.hitema.jee.entities.City;
-import com.hitema.jee.entities.Country;
-import com.hitema.jee.services.CityService;
-import com.hitema.jee.services.CountryService;
+import com.hitema.jee.interfaces.CityService;
 import jakarta.annotation.PostConstruct;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;

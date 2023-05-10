@@ -30,10 +30,15 @@
 	<div class="w3-container">
 		<h2 style="text-align: center">Ajouter une ville</h2>
 
+		<p>${country}er</p>
 
-		<form th:action="@{/country/add}" th:object="${country}" method="post">
-			<label for="countryName">Country name:</label>
-			<input type="text" th:field="*{country}" id="countryName" name="country.country" class="w3-input" placeholder="Enter country name" />
+		<form name="addCountryPost" action="post-add"  method="post">
+			<p>
+				<label>Country </label>
+				<label>
+					<input type="text" name="country"/>
+				</label>
+			</p>
 			<button type="submit">Submit</button>
 		</form>
 

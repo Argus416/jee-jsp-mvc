@@ -1,15 +1,17 @@
 package com.hitema.jee.services;
 
 import com.hitema.jee.entities.City;
+import com.hitema.jee.interfaces.CityService;
 import com.hitema.jee.repositories.CityRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
-public class CityServiceImpl implements CityService{
+public class CityServiceImpl implements CityService {
 
     private static final Logger log = LoggerFactory.getLogger(CityServiceImpl.class);
     private CityRepository repository;
@@ -20,6 +22,10 @@ public class CityServiceImpl implements CityService{
 
     @Override
     public City create(City city) {
+
+        if(city.getLastUpdate() == null) {
+            city.setLastUpdate(LocalDateTime.now());
+        }
         return repository.save(city);
     }
 
