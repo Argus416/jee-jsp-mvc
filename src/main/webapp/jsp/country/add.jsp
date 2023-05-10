@@ -16,7 +16,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- 	CSS (w3css) de la Page -->
-<link rel="stylesheet" href="<c:url value="css/w3.css" />" />
+	<link rel="stylesheet" href="<c:url value="css/w3.css" />" />
+	<link rel="stylesheet" href="<c:url value="css/style.css" />" />
 
 <title>Countries JSP</title>
 
@@ -27,28 +28,15 @@
 <%--<jsp:include page="header.jsp"></jsp:include>--%>
 
 	<div class="w3-container">
-		<h2 style="text-align: center">Sakila - cities</h2>
-		<br>
-		<button onclick="<c:url value="/" />" >Retour</button>
+		<h2 style="text-align: center">Ajouter une ville</h2>
 
-		<table id="countriesTable" class="w3-centered w3-table-all">
-			<thead>
-				<tr class="w3-light-grey">
-					<th>Id</th>
-					<th>City</th>
-				</tr>
-			</thead>
-			<tbody>
-				<c:forEach items="${cities}" var="elem">
-					<tr>
-						<th scope="row">${elem.id}</th>
-						<td>
-							${elem.city}
-						</td>
-					</tr>
-				</c:forEach>
-			</tbody>
-		</table>
+
+		<form th:action="@{/country/add}" th:object="${country}" method="post">
+			<label for="countryName">Country name:</label>
+			<input type="text" th:field="*{country}" id="countryName" name="country.country" class="w3-input" placeholder="Enter country name" />
+			<button type="submit">Submit</button>
+		</form>
+
 	</div>
 </body>
 <!-- JavaScript resources dataTables + jQuery -->

@@ -27,24 +27,30 @@
 <%--<jsp:include page="header.jsp"></jsp:include>--%>
 
 	<div class="w3-container">
-		<h2 style="text-align: center">Sakila - countries</h2>
-		<br>
-		<button onclick="<c:url value="/" />" >Retour</button>
+		<h2 style="text-align: center">Sakila - cities</h2>
+		<div class="w3-margin-bottom w3-margin-top">
+			<a class="w3-button w3-green" href="<c:url value="/"/>">Retour</a>
+		</div>
 
 		<table id="countriesTable" class="w3-centered w3-table-all">
 			<thead>
 				<tr class="w3-light-grey">
 					<th>Id</th>
+					<th>City</th>
 					<th>Country</th>
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach items="${countries}" var="elem">
+				<c:forEach items="${cities}" var="elem">
 					<tr>
 						<th scope="row">${elem.id}</th>
 						<td>
-							<a href="country/${elem.id}">${elem.country}</a>
+							${elem.city}
 						</td>
+						<td>
+							${elem.country.country}
+						</td>
+
 					</tr>
 				</c:forEach>
 			</tbody>

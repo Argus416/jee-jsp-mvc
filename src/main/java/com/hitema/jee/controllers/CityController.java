@@ -36,6 +36,6 @@ public class CityController {
 	@GetMapping("/cities")
 	public ModelAndView getCountry() {
 		List<City> cities = service.readAll();
-		return new ModelAndView("cities","cities",cities);
+		return new ModelAndView("city/all","cities",cities);
 	}
 }

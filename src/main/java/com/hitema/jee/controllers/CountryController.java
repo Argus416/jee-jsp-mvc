@@ -7,10 +7,14 @@ import jakarta.annotation.PostConstruct;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.bind.annotation.ModelAttribute;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 
@@ -34,7 +38,7 @@ public class CountryController {
 	@GetMapping("/countries")
     public ModelAndView getCountries() {	
 		List<Country> countries = service.readAll();
-        return new ModelAndView("countries","countries",countries);
+        return new ModelAndView("country/all","countries",countries);
     }
 
 	@GetMapping("/country/{id}")
@@ -42,6 +46,21 @@ public class CountryController {
 		Long numericId = Long.parseLong(id);
 		Country country = service.read(numericId);
 		System.out.println("Country : "+country);
-		return new ModelAndView("country","country",country);
+		return new ModelAndView("country/one","country",country);
 	}
+
+	@GetMapping("/country/add")
+	public ModelAndView addCountryGet() {
+		return new ModelAndView("country/add");
+	}
+
+	@PostMapping("/country/add")
+	public  ModelAndView  addCountryPost(@ModelAttribute Country country) {
+		country.setLastUpdate(LocalDateTime.now());
+		service.create(country);
+		return new ModelAndView("country/one","country",country);
+	}
+
+
+
 }
