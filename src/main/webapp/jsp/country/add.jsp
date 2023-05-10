@@ -30,9 +30,7 @@
 	<div class="w3-container">
 		<h2 style="text-align: center">Ajouter une ville</h2>
 
-		<p>${country}er</p>
-
-		<form name="addCountryPost" action="post-add"  method="post">
+		<form name="addCountryPost" action="add"  method="post">
 			<p>
 				<label>Country </label>
 				<label>

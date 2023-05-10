@@ -10,7 +10,7 @@ public class IndexController {
     private static final Logger log = LoggerFactory.getLogger(IndexController.class);
 
     @GetMapping("/")
-    public String index(){
-        return "index" ;
+    public String index() {
+        return "index";
     }
 }

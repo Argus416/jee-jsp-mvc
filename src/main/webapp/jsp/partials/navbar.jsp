@@ -1,4 +1,5 @@
-<%--
+<%@ page import="jakarta.servlet.jsp.jstl.core.Config" %>
+<%@ page import="java.util.Locale" %><%--
   Created by IntelliJ IDEA.
   User: Developpeur
   Date: 09/05/2023
@@ -21,9 +22,20 @@
     <title>Index</title>
 </head>
 <body>
-<jsp:include page="partials/navbar.jsp"/>
-<h1 style="text-align: center"><spring:message code="welcome.message"/></h1>
-<a href="countries">Pays</a>
-<a href="cities">Villes</a>
+<header>
+    <nav>
+        <%
+            Locale locale = pageContext.getResponse().getLocale();
+            String language = locale.getLanguage();
+        %>
+
+        <% if (language.equals("fr")) { %>
+        <a href="?lang=en">English</a>
+        <% } else { %>
+        <a href="?lang=fr">Français</a>
+        <% } %>
+
+    </nav>
+</header>
 </body>
 </html>
