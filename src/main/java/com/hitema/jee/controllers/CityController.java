@@ -1,7 +1,9 @@
 package com.hitema.jee.controllers;
 
 
+import com.hitema.jee.entities.City;
 import com.hitema.jee.entities.Country;
+import com.hitema.jee.services.CityService;
 import com.hitema.jee.services.CountryService;
 import jakarta.annotation.PostConstruct;
 import org.apache.logging.log4j.LogManager;
@@ -15,13 +17,13 @@ import java.util.List;
 
 
 @Controller
-public class CountryController {
+public class CityController {
 
-	private static final Logger log = LogManager.getLogger(CountryController.class);
+	private static final Logger log = LogManager.getLogger(CityController.class);
 
-	private CountryService service;
+	private CityService service;
 
-	public CountryController(CountryService service) {
+	public CityController(CityService service) {
 		this.service = service;
 	}
 
@@ -30,10 +32,10 @@ public class CountryController {
 		log.info("Check postconstruct called service Up : "+(service!=null?"Yes":"No"));
 	}
 	
-	
-	@GetMapping("/countries")
-    public ModelAndView getCountries() {	
-		List<Country> countries = service.readAll();
-        return new ModelAndView("countries","countries",countries);
-    }
+
+	@GetMapping("/cities")
+	public ModelAndView getCountry() {
+		List<City> cities = service.readAll();
+		return new ModelAndView("cities","cities",cities);
+	}
 }
