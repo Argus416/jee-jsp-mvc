@@ -25,7 +25,7 @@ class CityServiceTest {
 
     @Test
     void create() {
-        log.trace("<<<<<<<Create City START>>>>>>>");
+        log.trace("<<<<<<< Create City START >>>>>>>");
         City city = new City();
         city.setCity("Viennes");
         city.setLastUpdate(LocalDateTime.now());
@@ -35,11 +35,16 @@ class CityServiceTest {
         service.create(city);
         assertNotNull(city.getId(),"ERROR Insert City ");
         log.info("City CREATED : {}", city);
-        log.trace("<<<<<<<Create City END  >>>>>>>");
+        log.trace("<<<<<<< Create City END  >>>>>>>");
     }
 
     @Test
     void read() {
+        log.info("<<<<<<<< Start reading the city >>>>>>>>>");
+        City city = service.read(1L);
+        log.info("Founded city : {}", city);
+        assertEquals("A Corua (La Corua)", city.getCity(), "Error while reading a city");
+        log.info("<<<<<<<< Finish reading the city >>>>>>>>>");
     }
 
     @Test
