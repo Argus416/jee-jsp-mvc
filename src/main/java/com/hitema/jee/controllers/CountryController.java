@@ -36,4 +36,12 @@ public class CountryController {
 		List<Country> countries = service.readAll();
         return new ModelAndView("countries","countries",countries);
     }
+
+	@GetMapping("/country/{id}")
+	public ModelAndView getCountry(@PathVariable String id) {
+		Long numericId = Long.parseLong(id);
+		Country country = service.read(numericId);
+		System.out.println("Country : "+country);
+		return new ModelAndView("country","country",country);
+	}
 }
