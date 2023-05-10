@@ -18,11 +18,14 @@
     <!-- 	CSS (w3css) de la Page -->
     <link rel="stylesheet" href="<c:url value="css/w3.css" />"/>
 
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css"/>
+
+
     <title>Countries JSP</title>
 
 </head>
 
-<body onload="init();">
+<body>
 
 <%--<jsp:include page="header.jsp"></jsp:include>--%>
 
@@ -66,6 +69,18 @@
         </tbody>
     </table>
 </div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"
+        integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer">
+</script>
+<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
+<script>
+    let table = new DataTable('#countriesTable', {
+        // config options...
+    });
+</script>
+
 </body>
 <!-- JavaScript resources dataTables + jQuery -->
 
